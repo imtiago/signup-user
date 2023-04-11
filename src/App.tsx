@@ -26,6 +26,7 @@ import Visibility from '@mui/icons-material/Visibility'
 import VisibilityOff from '@mui/icons-material/VisibilityOff'
 import { yupResolver } from '@hookform/resolvers/yup'
 import AlertCustom from './components/Alert'
+import FormHelperText from '@mui/material/FormHelperText'
 
 let createrUserSchema = object({
     name: string().required('O nome é obrigatório'),
@@ -118,7 +119,10 @@ function App() {
                             {...register('email')}
                             helperText={errors.email?.message}
                         />
-                        <FormControl variant="outlined">
+                        <FormControl
+                            variant="outlined"
+                            error={!!errors.password}
+                        >
                             <InputLabel htmlFor="password">Senha</InputLabel>
                             <OutlinedInput
                                 {...register('password')}
@@ -144,6 +148,9 @@ function App() {
                                 }
                                 label="Password"
                             />
+                            <FormHelperText id="component-error-text">
+                                {errors.password?.message}
+                            </FormHelperText>
                         </FormControl>
 
                         <Button variant="contained" type="submit">
