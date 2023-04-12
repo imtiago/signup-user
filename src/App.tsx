@@ -93,17 +93,25 @@ function App() {
     }
     return (
         <Box
-            // flex={}
-            width={'500px'}
+            display="flex"
+            flexDirection="column"
+            minHeight={800}
             gap={2}
             alignItems={'center'}
-            justifyItems={'center'}
+            justifyContent={'center'}
         >
-            <Box flex={1} gap={2}>
+            <Box
+                display="flex"
+                flexDirection="column"
+                gap={2}
+                p={2}
+                border={1}
+                borderRadius={1}
+            >
+                <Typography variant="h3" color="initial">
+                    Cadastro de usuário
+                </Typography>
                 <form onSubmit={handleSubmit(handlerCreate)}>
-                    <Typography variant="h3" color="initial">
-                        Cadastro de usuário
-                    </Typography>
                     <Stack direction="column" spacing={2}>
                         <TextField
                             error={!!errors.name}
